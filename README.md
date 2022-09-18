@@ -48,6 +48,6 @@ Click the "load more" button bellow the first post. Should work both in developm
 
 ## To see on Vercel
 
-This link: [vercel.app]().
+This link: [next-image-path-problem.vercel.app](http://next-image-path-problem.vercel.app/).
 
 Click the "load more" button bellow the first post. Width and height should appear as 0 (as the error was caught).
