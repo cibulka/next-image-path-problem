@@ -32,7 +32,7 @@ const Home: NextPage<{ post: BlogPost; readMe: any }> = (props) => {
       .finally(() => setIsLoading(false));
   }
 
-  const title = `How to load image size on Next.js's API endpoint (hosted on Vercel)`;
+  const title = `How to load image size on Next.js's API endpoint (hosted on Vercel)?`;
 
   return (
     <>

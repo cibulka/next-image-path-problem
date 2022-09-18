@@ -24,7 +24,7 @@ Thanks in advance!
 
 ## File in question
 
-This file: [src/helpers/getPostOnServer.ts]().
+This file: [src/helpers/getPostOnServer.ts](https://github.com/cibulka/next-image-path-problem/blob/main/src/helpers/getPostOnServer.ts).
 
 - ✅ locally on `npm run dev`
 - ✅ locally on `npm start`
