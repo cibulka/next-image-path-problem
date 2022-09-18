@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+I need to get image dimensions from an API route of Next.js. Locally (both with npm run dev and npm run build && npm start) this (pseudo) code works:
 
-## Getting Started
+```
+import path from 'path';
+import imageSize from 'image-size';
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+export default async function ApiEndpoint(req: NextApiRequest, res: NextApiResponse) {
+const { width, height } = imageSize(path.join('./public', photo));
+... other things
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+On Vercel however it does not and I get this error:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+Error: ENOENT: no such file or directory, open '/var/task/public/stories/tatiana.jpeg'
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+I've tried variations of the path (such as 'public', './public', '/public' or omitting "public") to no avail.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Is there a recommended way how to read a file dynamically (not with import) in the API route of Next.js hosted on Vercel?
 
-## Learn More
+Thanks in advance!
 
-To learn more about Next.js, take a look at the following resources:
+## File in question
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This file: [src/helpers/getPostOnServer.ts]().
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- ✅ locally on `npm run dev`
+- ✅ locally on `npm start`
+- ✅ in `getStaticProps` - locally and on Vercel
+- ✅ when called on endpoint `/api/blog`, but _only locally_
+- ❌ when called on endpoint `/api/blog` on Vercel
 
-## Deploy on Vercel
+## To reproduce locally
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm install
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm install
+npm start
+```
+
+Click the "load more" button bellow the first post. Should work both in development and production mode.
+
+## To see on Vercel
+
+This link: [vercel.app]().
+
+Click the "load more" button bellow the first post. Width and height should appear as 0 (as the error was caught).

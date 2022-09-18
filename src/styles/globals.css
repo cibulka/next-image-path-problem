@@ -4,11 +4,33 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    line-height: 1.5;
+}
+
+#__next {
+  display: flex; 
+  min-height: 100vh; 
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+code {
+  padding: 0.25em;
+  background: #ddd;
+}
+pre code {
+  display: block;
+  overflow-x: scroll;
+  padding: 0.5em;
+}
+
+ul, li, ul li, ol li {
+  padding-left: 0;
+  margin-left: 0;
+  list-style-type: none;
 }
 
 * {

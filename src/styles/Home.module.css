@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 40em;
+  padding: 1em;
+}
+
+.text ul li {
+  list-style: disc;
+  padding-left: 0.5em;
+  margin-left: 0.5em;
+}
+.text a {
+  color: blue;
+  text-decoration: underline;
+}
+
+
+.article {
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+  border-bottom: dashed 1px #aaa;
+}
+.postImage {
+  position: relative;
+  margin-top: 1em;
+}
+.postImage img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
