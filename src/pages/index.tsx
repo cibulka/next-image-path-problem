@@ -59,19 +59,16 @@ const Home: NextPage<{ post: BlogPost; readMe: any }> = (props) => {
                 return (
                   <li key={i} className={styles.article}>
                     <h2>{post.title}</h2>
-                    <h3>Image size</h3>
-                    {post.width && post.height ? (
-                      <>
-                        <div>
-                          <strong>Width</strong>: {post.width}
-                        </div>
-                        <div>
-                          <strong>Height</strong>: {post.height}
-                        </div>
-                      </>
-                    ) : (
-                      <div>Error! No image dimmensions, falling back to 16x9 ratio.</div>
-                    )}
+                    <h3>Image params</h3>
+                    <div>
+                      <strong>Width</strong>: {post.width || 'unknown'}
+                    </div>
+                    <div>
+                      <strong>Height</strong>: {post.height || 'unknown'}
+                    </div>
+                    <div>
+                      <strong>Path</strong>: {post.path || 'unknown'}
+                    </div>
                     <div className={styles.postImage}>
                       <Image src={post.image} fill sizes="20em" alt="" />
                       <div style={{ paddingBottom: `${paddingBottom}%` }} />

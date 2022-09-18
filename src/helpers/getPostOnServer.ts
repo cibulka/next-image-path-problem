@@ -11,8 +11,10 @@ export default function getPostOnServer(index: number): BlogPost {
 
   let width: number = 0;
   let height: number = 0;
+
+  const photoPath = path.join(process.cwd(), '/public', item.image);
   try {
-    const photoSize = imageSize(path.join(process.cwd(), '/public', item.image));
+    const photoSize = imageSize(photoPath);
     if (photoSize.width && photoSize.height) {
       width = photoSize.width;
       height = photoSize.height;
@@ -26,5 +28,6 @@ export default function getPostOnServer(index: number): BlogPost {
     image: item.image,
     width,
     height,
+    path: photoPath,
   };
 }

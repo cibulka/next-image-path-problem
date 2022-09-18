@@ -3,4 +3,5 @@ export interface BlogPost {
   title: string;
   width: number;
   height: number;
+  path: string;
 }
