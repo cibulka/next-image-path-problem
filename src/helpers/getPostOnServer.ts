@@ -13,14 +13,17 @@ export default function getPostOnServer(index: number): BlogPost {
   let height: number = 0;
 
   const photoPath = path.join(process.cwd(), '/public', item.image);
+
   try {
     const photoSize = imageSize(photoPath);
     if (photoSize.width && photoSize.height) {
       width = photoSize.width;
       height = photoSize.height;
+      console.log(photoPath, 'this photoPath works');
     }
   } catch (e) {
     console.error(e);
+    console.log(photoPath, 'this photoPath does not work');
   }
 
   return {
